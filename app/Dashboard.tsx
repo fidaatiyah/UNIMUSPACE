@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons';
+import { useRouter } from 'expo-router'; // ✅ Tambahkan ini
+import React from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Dashboard = () => {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       
@@ -100,7 +102,27 @@ const Dashboard = () => {
       <Text style={styles.buttonText}>Lihat Detail</Text>
     </TouchableOpacity>
   </View>
+    <View style={styles.card}>
+    <View style={styles.cardHeader}>
+      <Text style={styles.cardTitle}>Ruang A.509</Text>
+      <Text style={[styles.badge, styles.waiting]}>Menunggu</Text>
+    </View>
+    <Text style={styles.cardText}>16 Mei 2025</Text>
+    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <TouchableOpacity style={styles.button}>
+      <Text style={styles.buttonText}>Lihat Detail</Text>
+    </TouchableOpacity>
+  </View>
 </ScrollView>
+      {/* Tombol Booking */}
+      <TouchableOpacity
+        style={styles.bookingButton}
+        onPress={() => router.push('/Booking')} // ✅ Navigasi ke form booking
+      >
+        <FontAwesome name="plus" size={16} color="white" style={{ marginRight: 6 }} />
+        <Text style={styles.bookingButtonText}>Booking Ruangan</Text>
+      </TouchableOpacity>
+
         </View>
   )
 }
@@ -156,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   box3: {
-    backgroundColor: '#E00F00',
+    backgroundColor: '#CF0F47',
     padding: 12,
     borderRadius: 10,
     width: '30%',
@@ -229,4 +251,27 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
+  bookingButton: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#00D5AA',
+  paddingVertical: 14,
+  borderRadius: 12,
+  position: 'absolute',
+  bottom: 20,
+  left: 16,
+  right: 16,
+  elevation: 5,
+  shadowColor: '#000',
+  shadowOpacity: 0.15,
+  shadowOffset: { width: 0, height: 3 },
+  shadowRadius: 6,
+},
+bookingButtonText: {
+  color: '#fff',
+  fontWeight: 'bold',
+  fontSize: 16,
+},
+
 })
