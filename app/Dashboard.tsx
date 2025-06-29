@@ -50,9 +50,10 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
+
   </View>
 
   <View style={styles.card}>
@@ -62,9 +63,10 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
+
   </View>
 
   <View style={styles.card}>
@@ -74,9 +76,10 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
+
   </View>
 
   <View style={styles.card}>
@@ -86,9 +89,10 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+   <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
+
   </View>
 
   <View style={styles.card}>
@@ -98,9 +102,10 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>17 Mei 2025</Text>
     <Text style={styles.cardText}>13.00 – 15.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
+
   </View>
     <View style={styles.card}>
     <View style={styles.cardHeader}>
@@ -112,6 +117,7 @@ const Dashboard = () => {
 <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
   <Text style={styles.buttonText}>Lihat Detail</Text>
 </TouchableOpacity>
+
   </View>
 </ScrollView>
       {/* Tombol Booking */}
