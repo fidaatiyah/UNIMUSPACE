@@ -22,19 +22,16 @@ const Dashboard = () => {
         <View style={styles.box1}>
           <FontAwesome name="clock-o" size={24} color="white" />
           <Text style={styles.boxtext}>Menunggu</Text>
-          <Text style={styles.boxtext}>2</Text>
         </View>
 
         <View style={styles.box2}>
           <FontAwesome name="check-circle" size={24} color="white" />
           <Text style={styles.boxtext}>Disetujui</Text>
-          <Text style={styles.boxtext}>3</Text>
         </View>
 
         <View style={styles.box3}>
           <FontAwesome name="times-circle" size={24} color="white" />
           <Text style={styles.boxtext}>Ditolak</Text>
-          <Text style={styles.boxtext}>1</Text>
         </View>
       </View>
 
@@ -46,77 +43,77 @@ const Dashboard = () => {
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Aula Serbaguna</Text>
-      <Text style={[styles.badge, styles.approved]}>Disetujui</Text>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+    
 
   </View>
 
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Ruang A.507</Text>
-      <Text style={[styles.badge, styles.rejected]}>Ditolak</Text>
+     <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+    
 
   </View>
 
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Ruang A.508</Text>
-      <Text style={[styles.badge, styles.approved]}>Disetujui</Text>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+    
 
   </View>
 
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Ruang A.509</Text>
-      <Text style={[styles.badge, styles.waiting]}>Menunggu</Text>
+       <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-   <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+  
 
   </View>
 
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Ruang A.510</Text>
-      <Text style={[styles.badge, styles.approved]}>Disetujui</Text>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>17 Mei 2025</Text>
     <Text style={styles.cardText}>13.00 – 15.00</Text>
-    <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+   
 
   </View>
     <View style={styles.card}>
     <View style={styles.cardHeader}>
       <Text style={styles.cardTitle}>Ruang A.509</Text>
-      <Text style={[styles.badge, styles.waiting]}>Menunggu</Text>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-<TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+
 
   </View>
 </ScrollView>
