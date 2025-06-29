@@ -1,7 +1,7 @@
-import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native'
+import React from 'react'
+import { FontAwesome } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'; // ✅ Tambahkan ini
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -109,9 +109,9 @@ const Dashboard = () => {
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
     <Text style={styles.cardText}>10.00 – 12.00</Text>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Lihat Detail</Text>
-    </TouchableOpacity>
+<TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
+  <Text style={styles.buttonText}>Lihat Detail</Text>
+</TouchableOpacity>
   </View>
 </ScrollView>
       {/* Tombol Booking */}
