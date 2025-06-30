@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from 'expo-router'; // ✅ Tambahkan ini
+import React from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <Text style={styles.cardText}>10.00 - 12.00</Text>
     
 
   </View>
@@ -61,7 +61,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <Text style={styles.cardText}>10.00 - 12.00</Text>
     
 
   </View>
@@ -74,7 +74,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <Text style={styles.cardText}>10.00 - 12.00</Text>
     
 
   </View>
@@ -87,7 +87,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <Text style={styles.cardText}>10.00 - 12.00</Text>
   
 
   </View>
@@ -100,7 +100,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>17 Mei 2025</Text>
-    <Text style={styles.cardText}>13.00 – 15.00</Text>
+    <Text style={styles.cardText}>13.00 - 15.00</Text>
    
 
   </View>
@@ -112,7 +112,7 @@ const Dashboard = () => {
 </TouchableOpacity>
     </View>
     <Text style={styles.cardText}>16 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 – 12.00</Text>
+    <Text style={styles.cardText}>10.00 - 12.00</Text>
 
 
   </View>
@@ -186,12 +186,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '30%',
     alignItems: 'center',
+    
   },
   boxtext: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
     marginTop: 4,
+   
   },
   riwayatTitle: {
     fontSize: 20,

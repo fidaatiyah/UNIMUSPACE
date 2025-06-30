@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
 import { useRouter } from 'expo-router'
+import React from 'react'
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 export default function Login() {
   const router = useRouter()
@@ -61,21 +61,30 @@ const styles = StyleSheet.create({
   inputNIM: {
     height: 48,
     width: 300,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#DFDFDF',
     borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 12,
     borderRadius: 8,
-    shadowColor: '',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 4,
   },
   inputPassword: {
     height: 48,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#dfdfdf',
     borderColor: '#ccc',
     borderWidth: 1,
     paddingHorizontal: 12,
     borderRadius: 8,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 4,
   },
   button :{
     height: 48,
