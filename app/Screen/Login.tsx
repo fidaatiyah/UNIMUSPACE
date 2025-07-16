@@ -1,35 +1,53 @@
-import { useRouter } from 'expo-router'
-import React from 'react'
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 
 export default function Login() {
-  const router = useRouter()
+  const router = useRouter();
+  const [nim, setNim] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // Contoh pengecekan role sederhana
+    if (nim === 'admin' && password === 'admin123') {
+      router.push('/AdminDashboard'); // ganti dengan route admin kamu
+    } else if (nim && password) {
+      router.push('/Dashboard'); // user biasa (mahasiswa/dosen)
+    } else {
+      Alert.alert('Login Gagal', 'NIM atau Password salah!');
+    }
+  };
+
   return (
     <View style={styles.container}>
-
       <Image style={styles.image} source={require('../../assets/images/unimuspace.png')} />
-      <Text style={styles.welcomeText}>login or sign up </Text>
+      <Text style={styles.welcomeText}>login or sign up</Text>
       
       <View style={styles.wrapper}>
-
         <TextInput
           style={styles.inputNIM}
           placeholder="NIM"
           placeholderTextColor="#888"
+          value={nim}
+          onChangeText={setNim}
         />
         <TextInput
           style={styles.inputPassword}
           placeholder="Password"
           placeholderTextColor="#888"
           secureTextEntry
+          value={password}
+          onChangeText={setPassword}
         />
-        <TouchableOpacity style={styles.button} onPress={() =>router.push('../Dashboard')} >
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={{ color: '#FFFFFF', fontWeight: 'bold' }}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
-  )
+  );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -93,6 +111,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
     marginTop: 16,
-  }
+  },
+    roleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 12,
+    marginBottom: 12,
+  },
+  roleButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    backgroundColor: '#ccc',
+  },
+  activeRole: {
+    backgroundColor: '#1E7AFF',
+  },
+  roleText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+
 })
 

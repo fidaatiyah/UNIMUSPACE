@@ -1,16 +1,39 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { useRouter } from 'expo-router'; // ✅ Tambahkan ini
+import { useRouter } from 'expo-router';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useBooking } from './Context/BookingContext'; // Context global
+
+interface RiwayatItem {
+  id: number;
+  ruangan: string;
+  tanggal: string;
+  waktu: string;
+}
 
 const Dashboard = () => {
   const router = useRouter();
+  const { riwayat, hapusRiwayat } = useBooking();
+
+  const handleDelete = (id: number) => {
+    hapusRiwayat(id);
+  };
+
   return (
     <View style={styles.container}>
-      
       {/* Logo Header */}
       <View style={styles.wrapper}>
-        <Image style={styles.image} source={require('../assets/images/unimus.png')} />
+        <Image
+          style={styles.image}
+          source={require('../assets/images/unimus.png')}
+        />
         <Text style={styles.UNIMUSPACE}>UNIMUSPACE</Text>
       </View>
 
@@ -35,103 +58,56 @@ const Dashboard = () => {
         </View>
       </View>
 
-      {/* Riwayat Title */}
-      <Text style={styles.riwayatTitle}>Riwayat Peminjaman</Text>
-    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
+{/* Riwayat Title */}
+<Text style={styles.riwayatTitle}>Riwayat Peminjaman</Text>
 
-  {/* Riwayat Cards */}
-  <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Aula Serbaguna</Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
+
+{/* Riwayat List */}
+<ScrollView style={{ marginBottom: 80 }}>
+  {riwayat.map((item: RiwayatItem) => (
+    <View style={styles.card} key={item.id}>
+      <View style={styles.cardHeader}>
+        <Text style={styles.cardTitle}>{item.ruangan}</Text>
+        <View style={{ flexDirection: 'row', gap: 8 }}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/Detail')}
+          >
+            <Text style={styles.buttonText}>Lihat Detail</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: '#CF0F47' }]}
+            onPress={() => hapusRiwayat(item.id)}
+          >
+            <Text style={styles.buttonText}>Hapus</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <Text style={styles.cardText}>{item.tanggal}</Text>
+      <Text style={styles.cardText}>{item.waktu}</Text>
     </View>
-    <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 - 12.00</Text>
-    
-
-  </View>
-
-  <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Ruang A.507</Text>
-     <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
-    </View>
-    <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 - 12.00</Text>
-    
-
-  </View>
-
-  <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Ruang A.508</Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
-    </View>
-    <Text style={styles.cardText}>15 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 - 12.00</Text>
-    
-
-  </View>
-
-  <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Ruang A.509</Text>
-       <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
-    </View>
-    <Text style={styles.cardText}>16 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 - 12.00</Text>
-  
-
-  </View>
-
-  <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Ruang A.510</Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
-    </View>
-    <Text style={styles.cardText}>17 Mei 2025</Text>
-    <Text style={styles.cardText}>13.00 - 15.00</Text>
-   
-
-  </View>
-    <View style={styles.card}>
-    <View style={styles.cardHeader}>
-      <Text style={styles.cardTitle}>Ruang A.509</Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/Detail')}>
-  <Text style={styles.buttonText}>Lihat Detail</Text>
-</TouchableOpacity>
-    </View>
-    <Text style={styles.cardText}>16 Mei 2025</Text>
-    <Text style={styles.cardText}>10.00 - 12.00</Text>
-
-
-  </View>
+  ))}
 </ScrollView>
+
+
       {/* Tombol Booking */}
       <TouchableOpacity
         style={styles.bookingButton}
-        onPress={() => router.push('/Booking')} // ✅ Navigasi ke form booking
+        onPress={() => router.push('/Booking')}
       >
-        <FontAwesome name="plus" size={16} color="white" style={{ marginRight: 6 }} />
+        <FontAwesome
+          name="plus"
+          size={16}
+          color="white"
+          style={{ marginRight: 6 }}
+        />
         <Text style={styles.bookingButtonText}>Booking Ruangan</Text>
       </TouchableOpacity>
+    </View>
+  );
+};
 
-        </View>
-  )
-}
-
-
-export default Dashboard
+export default Dashboard;
 
 const styles = StyleSheet.create({
   container: {
@@ -186,14 +162,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '30%',
     alignItems: 'center',
-    
   },
   boxtext: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
     marginTop: 4,
-   
   },
   riwayatTitle: {
     fontSize: 20,
@@ -216,28 +190,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 8,
+    alignItems: 'center',
   },
   cardTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#000',
-  },
-  badge: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
-    color: '#fff',
-  },
-  approved: {
-    backgroundColor: '#00D5AA',
-  },
-  rejected: {
-    backgroundColor: '#E00F00',
-  },
-  waiting: {
-    backgroundColor: '#1E7AFF',
   },
   cardText: {
     color: '#444',
@@ -249,34 +207,32 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 6,
-    alignSelf: 'flex-start',
-    marginTop: 8,
+    marginLeft: 6,
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
   },
   bookingButton: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#00D5AA',
-  paddingVertical: 14,
-  borderRadius: 12,
-  position: 'absolute',
-  bottom: 20,
-  left: 16,
-  right: 16,
-  elevation: 5,
-  shadowColor: '#000',
-  shadowOpacity: 0.15,
-  shadowOffset: { width: 0, height: 3 },
-  shadowRadius: 6,
-},
-bookingButtonText: {
-  color: '#fff',
-  fontWeight: 'bold',
-  fontSize: 16,
-},
-
-})
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#00D5AA',
+    paddingVertical: 14,
+    borderRadius: 12,
+    position: 'absolute',
+    bottom: 20,
+    left: 16,
+    right: 16,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 6,
+  },
+  bookingButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

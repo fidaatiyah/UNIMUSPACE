@@ -13,7 +13,7 @@ export default function Detail() {
 
       <View style={styles.infoBox}>
         <Text style={styles.infoText}>
-          Ruangan ini tidak tersedia karena digunakan untuk kegiatan perkuliahan, rapat dosen, maupun acara lainnya pada waktu tersebut.
+          Ruangan ini tersedia karena digunakan untuk kegiatan perkuliahan, rapat dosen, maupun acara lainnya pada waktu tersebut.
         </Text>
       </View>
     </View>

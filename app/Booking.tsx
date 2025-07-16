@@ -1,42 +1,87 @@
+import React, { useState } from 'react';
+import { TextInput, Text, View, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useRouter } from 'expo-router';
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
+import { useBooking } from './Context/BookingContext'; // <- ini penting
 
 export default function Booking() {
   const router = useRouter();
+  const { tambahRiwayat } = useBooking();
+
+  const [ruangan, setRuangan] = useState('');
+  const [tanggal, setTanggal] = useState('');
+  const [jamMulai, setJamMulai] = useState('');
+  const [jamSelesai, setJamSelesai] = useState('');
+
+  const handleBooking = () => {
+    if (ruangan && tanggal && jamMulai && jamSelesai) {
+      tambahRiwayat({
+        ruangan,
+        tanggal,
+        waktu: `${jamMulai} - ${jamSelesai}`,
+      });
+      router.push('/Dashboard');
+    } else {
+      alert('Mohon isi semua data!');
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Header */}
+      {/* Logo Header */}
       <View style={styles.header}>
-        <Image style={styles.logo} source={require('../assets/images/unimus.png')} />
+        <Image
+          source={require('../assets/images/unimus.png')}
+          style={styles.logo}
+        />
         <Text style={styles.brand}>UNIMUSPACE</Text>
       </View>
 
+      {/* Judul Form */}
       <Text style={styles.title}>Form Booking Tempat</Text>
 
-      {/* Form */}
+      {/* Form Input */}
       <View style={styles.form}>
         <Text style={styles.label}>Nama Tempat</Text>
-        <TextInput placeholder="" style={styles.input} />
+        <TextInput
+          placeholder="Masukkan nama ruangan"
+          style={styles.input}
+          value={ruangan}
+          onChangeText={setRuangan}
+        />
 
         <Text style={styles.label}>Tanggal</Text>
-        <TextInput placeholder="DD-MM-YYYY" style={styles.input} />
+        <TextInput
+          placeholder="DD-MM-YYYY"
+          style={styles.input}
+          value={tanggal}
+          onChangeText={setTanggal}
+        />
 
         <Text style={styles.label}>Jam Mulai</Text>
-        <TextInput placeholder="" style={styles.input} />
+        <TextInput
+          placeholder="Contoh: 10.00"
+          style={styles.input}
+          value={jamMulai}
+          onChangeText={setJamMulai}
+        />
 
         <Text style={styles.label}>Jam Selesai</Text>
-        <TextInput placeholder="" style={styles.input} />
-
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/Dashboard')}>
-           <Text style={styles.buttonText}>Booking Sekarang</Text>
-         </TouchableOpacity>
-
+        <TextInput
+          placeholder="Contoh: 12.00"
+          style={styles.input}
+          value={jamSelesai}
+          onChangeText={setJamSelesai}
+        />
       </View>
+
+      {/* Tombol Submit */}
+      <TouchableOpacity onPress={handleBooking} style={styles.button}>
+        <Text style={styles.buttonText}>Booking Sekarang</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
+
 
 
 const styles = StyleSheet.create({
